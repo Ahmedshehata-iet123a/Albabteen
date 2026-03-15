@@ -1,0 +1,71 @@
+<odoo>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_accounting_reports" name="Reports" parent="account.menu_finance"
+              sequence="10" groups="account_report_menu.group_show_reports"/>
+    <record id="account.menu_finance_reports" model="ir.ui.menu">
+        <field name="groups_id" eval="[(4,ref('account_report_menu.group_show_reporting')),(3,ref('account.group_account_invoice')),(3,ref('account.group_account_readonly'))]"/>
+        <!--        <field name="groups">account_report_menu.account_report_menu</field>-->
+    </record>
+    <menuitem id="account_management_menu" name="Management"
+              parent="account_report_menu.menu_accounting_reports" sequence="1"
+              groups="account_report_menu.group_show_reports"/>
+
+
+    <menuitem id="menu_action_account_invoice_report_all" name="Invoice Analysis"
+              parent="account_report_menu.account_management_menu"
+              action="account.action_account_invoice_report_all" sequence="1"/>
+    <menuitem parent="account_report_menu.account_management_menu" id="menu_action_account_asset_asset_form"
+              action="base_accounting_kit.action_asset_asset_report" sequence="3"/>
+
+    <menuitem parent="account_report_menu.account_management_menu"
+              id="menu_act_budget_view"
+              action="base_account_budget.act_budget_lines_view" sequence="2"/>
+
+
+    <menuitem id="account_reports_ins_wiz" sequence="2"
+              name="Dynamic Reports(Wiz)" parent="account_report_menu.menu_accounting_reports"
+              groups="account_report_menu.group_show_reports"/>
+
+
+    <menuitem id="account_report_pl_wiz" sequence="60"
+              action="account_dynamic_reports.action_ins_profit_and_loss_report"
+
+              name="Profit and Loss" parent="account_report_menu.account_reports_ins_wiz"
+              groups="account.group_account_user"/>
+
+    <menuitem id="account_report_bs_wiz" sequence="70"
+              action="account_dynamic_reports.action_ins_balance_sheet_report"
+
+              name="Balance Sheet" parent="account_report_menu.account_reports_ins_wiz"
+              groups="account.group_account_user"/>
+
+    <menuitem id="account_report_cf_wiz" sequence="80"
+              action="account_dynamic_reports.action_ins_cash_flow_report"
+              name="Cash Flow" parent="account_report_menu.account_reports_ins_wiz"
+              groups="account.group_account_user"/>
+    <menuitem id="account_report_gl_wiz" sequence="10"
+              action="account_dynamic_reports.action_ins_general_ledger_wizard"
+              name="General Ledger" parent="account_report_menu.account_reports_ins_wiz"
+              groups="account.group_account_user"/>
+    <menuitem id="account_report_pa_wiz" sequence="40"
+              action="account_dynamic_reports.action_ins_partner_ageing_wizard"
+              name="Partner Ageing" parent="account_report_menu.account_reports_ins_wiz"
+              groups="account.group_account_user"/>
+    <menuitem id="account_report_plg_wiz" sequence="20"
+              action="account_dynamic_reports.action_ins_partner_ledger_wizard"
+              name="Partner Ledger" parent="account_report_menu.account_reports_ins_wiz"
+              groups="account.group_account_user"/>
+    <menuitem id="account_report_tb_wiz" sequence="30"
+              action="account_dynamic_reports.action_ins_trial_balance_wizard"
+              name="Trial Balance" parent="account_report_menu.account_reports_ins_wiz"
+              groups="account.group_account_user"/>
+
+    <menuitem
+            id="menu_account_hierarchy"
+            name="Chart of Accounts Hierarchy"
+            parent="account_report_menu.menu_accounting_reports"
+            action="odoo_account_hierarchy.action_account_hierarchy"
+            groups="odoo_account_hierarchy.group_account_hierarchy_user"
+            sequence="31"/>
+
+</odoo>

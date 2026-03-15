@@ -1,0 +1,151 @@
+<odoo>
+<!--    <record id="cron_create_insurance" model="ir.cron">-->
+<!--            <field name="name">Create Insurance</field>-->
+<!--            <field name="model_id" ref="Joudtech_insurance_brokerage.model_insurance_brokerage"/>-->
+<!--            <field name="state">code</field>-->
+<!--            <field name="code">model.create_data_insurance()</field>-->
+<!--            <field name='interval_number'>3</field>-->
+<!--            <field name='interval_type'>minutes</field>-->
+<!--            <field name="numbercall">-1</field>-->
+<!--            <field name="priority">3</field>-->
+<!--        </record>-->
+
+
+    <record id="insurance_view_form" model="ir.ui.view">
+        <field name="name">_view_form</field>
+        <field name="model">insurance.brokerage</field>
+        <field name="arch" type="xml">
+            <form string="Insurance Brokerage" create="0" >
+                <header>
+                    <field name="state" widget="statusbar" nolabel="1"/>
+                    <button name="action_done" string="Validate" class="oe_highlight"
+                            groups="Joudtech_insurance_brokerage.group_manager_broker"
+                            type="object" attrs="{'readonly':[('state','!=','draft')]}" states="draft"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_moves" type="object" class="oe_stat_button" icon="fa-globe icon">
+                            <div class="o_field_widget o_stat_info">
+                                <span class="o_stat_text">Journal Enteries</span>
+
+                            </div>
+                        </button>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="policy_no"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="id_no"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="sponsor_no"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="sponsor_name"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="user_id"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="cinv_id"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="vendor_id"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                        </group>
+                        <group>
+                            <field name="date_doc"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="doc_state"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="list_price"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="profit_amount"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="standard_price"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="date_from"    required="1"  attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="date_to" required="1"     attrs="{'readonly':[('state','!=','draft')]}"/>
+                            <field name="is_online"  required="1"   attrs="{'readonly':[('state','!=','draft')]}"/>
+<!--                            <field name="product_id"     attrs="{'readonly':[('state','!=','draft')]}"/>-->
+                            <!--                            <field name="analytic_line_ids" readonly="1"/>-->
+
+                        </group>
+                    </group>
+
+                </sheet>
+                  <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" widget="mail_activity"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="insurance_view_tree" model="ir.ui.view">
+        <field name="name">insurance_view_tree</field>
+        <field name="model">insurance.brokerage</field>
+        <field name="arch" type="xml">
+            <tree string="Insurance Brokerage"
+                  decoration-info="state == 'draft'" decoration-muted="state == 'cancel'">
+
+                <field name="policy_no"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="id_no"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="sponsor_no"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="sponsor_name"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="user_id"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="date_doc"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="doc_state"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="list_price"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="profit_amount"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="standard_price"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="state"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="date_from"    attrs="{'readonly':[('state','!=','draft')]}"/>
+                <field name="date_to" readonly="1"/>
+                <field name="is_online" required="1"  readonly="1"/>
+            </tree>
+        </field>
+    </record>
+    <record id="borkersearch" model="ir.ui.view">
+        <field name="name">borkersearch</field>
+        <field name="model">insurance.brokerage</field>
+        <field name="arch" type="xml">
+            <search string="">
+                <field name="policy_no"/>
+                <field name="id_no"/>
+                <field name="sponsor_no"/>
+                <field name="sponsor_name"/>
+                <field name="user_id"/>
+                <group expand="0" string="Group By">
+
+                    <filter name="status" string="Status" context="{'group_by':'state'}"/>
+                    <separator/>
+                    <filter string="DOC  Date" name="date_doc" context="{'group_by': 'date_doc'}"/>
+                    <filter string="DOC STATUS" name="doc_state" context="{'group_by': 'doc_state'}"/>
+                    <filter string="INSU PRODUCT" name="product_id" context="{'group_by': 'product_id'}"/>
+                    <filter string="INSU VENDOR" name="vendor_id" context="{'group_by': 'vendor_id'}"/>
+                    <filter string="Policy Date" name="date_from" context="{'group_by': 'date_from'}"/>
+                    <filter string="Policy o" name="date_to" context="{'group_by': 'date_to'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+    <record id="insurance_brokerage_menu_action" model="ir.actions.act_window">
+        <field name="name">Insurance Brokerage</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">insurance.brokerage</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="insurance_brokerage_menu_root" name="Insurance Brokerage"
+              sequence="5"/>
+
+    <record id="server_action_inssurance_Validate-2" model="ir.actions.server">
+        <field name="name">Validate</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_insurance_brokerage"/>
+        <field name="binding_model_id" ref="Joudtech_insurance_brokerage.model_insurance_brokerage"/>
+        <field name="state">code</field>
+        <field name="binding_type">action</field>
+        <field name="code">action=records.action_done()
+        </field>
+    </record>
+     <record id="server_action_inssurance_set_draft-2" model="ir.actions.server">
+        <field name="name">Set Draft</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_insurance_brokerage"/>
+        <field name="binding_model_id" ref="Joudtech_insurance_brokerage.model_insurance_brokerage"/>
+        <field name="state">code</field>
+        <field name="binding_type">action</field>
+        <field name="code">action=records.set_draft()
+        </field>
+          <field name="groups_id" eval="[(4, ref('Joudtech_insurance_brokerage.group_manager_broker'))]"/>
+    </record>
+
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="insurance_brokerage_menu_parent" name="Insurance Brokerage"
+              parent="insurance_brokerage_menu_root" action="insurance_brokerage_menu_action" sequence="1"/>
+</odoo>

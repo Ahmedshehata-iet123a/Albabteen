@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_Joudtech_insurance_brokerage_Joudtech_insurance_brokerage,Joudtech_insurance_brokerage,model_insurance_brokerage,Joudtech_insurance_brokerage.group_user_broker,1,1,1,1
+access_Joudtechconf,access_Joudtechconf,model_insurrance_conf,Joudtech_insurance_brokerage.group_manager_broker,1,1,1,1

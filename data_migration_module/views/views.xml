@@ -1,0 +1,54 @@
+<odoo>
+<record id="group_data_mi" model="res.groups">
+    <field name="name">Data</field>
+
+</record>
+    <record id="migration_view_tree" model="ir.ui.view">
+        <field name="name">migration_view_tree</field>
+        <field name="model">res.migration.data</field>
+        <field name="arch" type="xml">
+            <tree string="_tree">
+                <field name="model_id"/>
+                <field name="from_id"/>
+                <field name="to_id"/>
+                <field name="url"/>
+            </tree>
+        </field>
+    </record>
+    <record id="migration_view_from" model="ir.ui.view">
+        <field name="name">migration_view_tree</field>
+        <field name="model">res.migration.data</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="send_data" type="object" string="Send"/>
+                    <button name="send_many2many" type="object" string="Send M2m"/>
+                    <button name="create_fields" type="object" string="create fiedl"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="model_id" required="1"/>
+                        <field name="is_new" />
+                        <field name="fields_id" required="1"/>
+                        <field name="fields_id_many" />
+                        <field name="from_id" />
+                        <field name="to_id"/>
+                        <field name="url"/>
+                        <field name="company_id" required="1"/>
+                    </group>
+                </sheet>
+
+            </form>
+
+
+        </field>
+    </record>
+    <record id="data_migration_action" model="ir.actions.act_window">
+        <field name="name">Data Migration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">res.migration.data</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <!-- This Menu Item must have a parent and an action -->
+    <menuitem id="menu_data_migration" name="Data Migration" action="data_migration_action" sequence="30" groups="data_migration_module.group_data_mi"/>
+</odoo>

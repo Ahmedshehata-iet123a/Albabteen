@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+      <!-- Inherit Form View to Modify it -->
+      <record id="search_view_journal_inherit" model="ir.ui.view">
+          <field name="name">account.move.line</field>
+          <field name="model">account.move.line</field>
+          <field name="inherit_id" ref="account.view_account_move_line_filter"/>
+          <field name="arch" type="xml">
+
+<!--              <searchpanal poaition="replace"></searchpanal>-->
+              <searchpanel class="account_root" position="replace">
+<!--                    <field name="account_root_id" icon="fa-filter" groupby="account_id" limit="0"/>-->
+              </searchpanel>
+
+          </field>
+      </record>
+
+    </data>
+</odoo>

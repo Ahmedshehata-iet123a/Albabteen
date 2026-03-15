@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="category_insurance" model="ir.module.category">
+            <field name="name">Broker</field>
+
+        </record>
+        <record id="group_user_broker" model="res.groups">
+            <field name="name">Users</field>
+            <field name="category_id" ref="Joudtech_insurance_brokerage.category_insurance"/>
+            <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        </record>
+        <record id="group_manager_broker" model="res.groups">
+            <field name="name">Manager</field>
+            <field name="category_id" ref="Joudtech_insurance_brokerage.category_insurance"/>
+            <field name="implied_ids" eval="[(4, ref('Joudtech_insurance_brokerage.group_user_broker'))]"/>
+        </record>
+
+    </data>
+</odoo>

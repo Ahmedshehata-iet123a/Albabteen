@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <record id="view_account_form_hierarchy" model="ir.ui.view">
+            <field name="name">view_account_form_hierarchy</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='parent_id']" position="before">
+                    <field name="level" options="{'no_open': True,'no_create_edit': True,'no_create': True}"/>
+                    <field name="level_ids" invisible="1"/>
+                    <!-- Add your fields or attributes here -->
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="attributes">
+                    <attribute name="options">{'no_open': True,'no_create_edit': True,'no_create': True}</attribute>
+
+                </xpath>
+
+            </field>
+        </record>
+        <record id="view_account_form_hierarchy_tree" model="ir.ui.view">
+            <field name="name">view_account_form_hierarchy_tree</field>
+            <field name="model">account.account</field>
+            <field name="inherit_id" ref="account.view_account_list"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='parent_id']" position="before">
+                    <field name="parent_level"/>
+                    <field name="level" options="{'no_open': True,'no_create_edit': True,'no_create': True}"/>
+                    <field name="level_ids" invisible="1"/>
+                    <!-- Add your fields or attributes here -->
+                </xpath>
+                <xpath expr="//field[@name='code']" position="attributes">
+                    <attribute name="required">0</attribute>
+                </xpath>
+                <xpath expr="//field[@name='parent_id']" position="attributes">
+                    <attribute name="options">{'no_open': True,'no_create_edit': True,'no_create': True}</attribute>
+
+                </xpath>
+
+            </field>
+        </record>
+        <record id="account_level_action" model="ir.actions.act_window">
+            <field name="name">Account Level</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">account.level</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="menu_account_level" name="Account Levels" parent="account.menu_finance_configuration"
+                  action="account_level_action" sequence="8"/>
+    </data>
+</odoo>

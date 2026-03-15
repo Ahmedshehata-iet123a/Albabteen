@@ -1,0 +1,89 @@
+<templates id="template" xml:space="preserve">
+     <t t-name="SubSectionPl"
+        t-inherit="account_dynamic_reports.SubSectionPl"
+
+     >
+          <xpath expr="//t" position="replace">
+                 <t t-name="SubSectionPl">
+<div class="py-mline-table-div">
+<table class="py-mline-data-table display compact">
+<thead>
+<tr>
+<th>Date</th>
+<th>JRNL</th>
+<th>Account</th>
+<th>Move</th>
+    <th>Policy No</th>
+<th>ID No</th>
+<th>Entry Label</th>
+<th class="amt-head">Debit</th>
+<th class="amt-head">Credit</th>
+<th class="amt-head">Balance</th>
+<!--<th class="amt-head">Balance in FC</th>-->
+</tr>
+</thead>
+<tbody>
+<t t-foreach="account_data" t-as="account_line">
+<t t-set="style" t-value="''"/>
+<t t-if="account_line.move_name == 'Initial Balance'">
+<t t-set="style" t-value="'font-style: italic;'"/>
+</t>
+<t t-if="account_line.move_name == 'Ending Balance'">
+<t t-set="style" t-value="'font-style: italic;'"/>
+</t>
+<tr>
+<td>
+<t t-if="account_line.ldate">
+<div class="dropdown">
+<a data-bs-toggle="dropdown" href="#">
+<span data-id="17">
+<t t-esc="account_line.ldate"/>
+</span>
+<i class="fa fa-caret-down" role="img" aria-label="Unfolded" title="Unfolded"></i>
+</a>
+<span data-id="17"></span>
+<ul class="dropdown-menu" role="menu">
+<t t-if="account_line.move_name">
+<li role="presentation">
+<a role="menuitem" class="view-source" tabindex="-1"
+action="open_document" t-att-data-move-id="account_line.move_id">
+View Source move
+</a>
+</li>
+</t>
+</ul>
+</div>
+</t>
+</td>
+<td><t t-esc="account_line.lcode"/></td>
+<td><t t-esc="account_line.account_name"/></td>
+<td t-att-style="style"><t t-esc="account_line.move_name"/></td>
+    <td t-att-style="style"><t t-esc="account_line.policy_no"/></td>
+<td t-att-style="style"><t t-esc="account_line.id_no"/></td>
+<td t-att-style="style"><t t-esc="account_line.lname"/></td>
+<td t-att-style="style" class="amt"><t t-raw="account_line.debit"/></td>
+<td t-att-style="style" class="amt"><t t-raw="account_line.credit"/></td>
+<td t-att-style="style" class="amt"><t t-raw="account_line.balance"/></td>
+<!--<td t-att-style="style" class="amt">-->
+<!--<t t-if="account_line['currency_symbol'] != account_line['company_currency_symbol']">-->
+<!--<t t-if="account_line['currency_position'] == 'before'">-->
+<!--<span t-esc="account_line['currency_symbol']"/>-->
+<!--<span t-esc="account_line['amount_currency']"/>-->
+<!--</t>-->
+<!--<t t-if="account_line['currency_position'] == 'after'">-->
+<!--<span t-esc="account_line['amount_currency']"/>-->
+<!--<span t-esc="account_line['currency_symbol']"/>-->
+<!--</t>-->
+<!--</t>-->
+<!--</td>-->
+</tr>
+</t>
+</tbody>
+</table>
+</div>
+</t>
+          </xpath>
+
+
+     </t>
+</templates>

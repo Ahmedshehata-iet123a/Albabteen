@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="sale_order_customer_preview_inherit" inherit_id="sale.sale_order_portal_content">
+            <xpath expr="//div[@id='informations']" position="replace">
+                <div class="page" t-if="sale_order.sale_order_template_id.is_project">
+                    <div class="row">
+                        <div class="col-12">
+                            <img src="/hh_sale_inherit/static/src/img/pageone.jpeg/"/>
+                        </div>
+                    </div>
+                    <div style="margin-top:10px">
+                        <div class="row fw-bold">
+                            <div class="col-6" style="text-align:left;font-size:20px">
+                                <strong>
+                                    We Make It
+                                </strong>
+                            </div>
+                            <div class="col-6 fw-bold" style="text-align:right;font-size:20px">
+                                <strong>
+                                    Date
+                                </strong>
+                                <!--                                <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>-->
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:30px">
+                            <div class="col-12" style="text-align:center">
+                                <h1 class="fw-bold" style="font-size:30px" t-field="sale_order.project_name"/>
+                                <br/>
+                                <h3 class="fw-bold" style="font-size:15px">Prepared By</h3>
+                                <br/>
+                                <h1 class="fw-bold" style="font-size:30px" t-field="sale_order.partner_id"/>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-top:30px">
+                            <div class="col-12">
+                                <p>This document contains information that is proprietary to and its associated
+                                    companies and subsidiaries.
+                                    Transmittal, receipt, or possession of this document does not express license,
+                                    or imply rights to use, sell, design, manufacture, or to have manufactured, any
+                                    product,
+                                    concept, or service from this information. No reproduction, publication,
+                                    or disclosure of this information, in whole, or in part, electronic or
+                                    otherwise,
+                                    shall be made without prior written authorization of an Officer of .
+                                    Authorized transfer of this document from the custody and control of constitutes
+                                    a loan for limited
+                                    purposes, and this document must be returned to upon request, and in all events,
+                                    upon completion of the purpose(s) of the loan.
+                                </p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="page" t-if="sale_order.sale_order_template_id.is_project" style="page-break-before:always;">
+                    <br/>
+                    <div class="row" style="margin-top:45px">
+                        <div class="col-12">
+                            <strong style="text-align:left;font-size:30px">
+                                Executive Summary
+                            </strong>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12">
+                            <b style="font-size:25px" t-field="sale_order.company_id.name"/>
+                            <span style="font-size:20px">is pleased to present this proposal to</span>
+                            <b style="font-size:25px" t-field="sale_order.partner_id.name"/>
+                            <span style="font-size:20px">for the delivery, installation, and configuration of the
+                            </span>
+                            <b style="font-size:25px" t-field="sale_order.project_name"/>
+                            <span style="font-size:20px">as per and limited to the items listed in this proposal.
+                                We would like to thank you for giving us the opportunity to put our long experience
+                                and technology solutions into this project, which in turn enables us to offer the
+                                enclosed proposal.
+                                Our proposal includes the delivery, installation, and configuration of the items
+                                included here-in as a solution.
+                            </span>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12">
+                            <strong style="text-align:left;font-size:30px">
+                                Confidentiality Agreement
+                            </strong>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12">
+                            <span style="font-size:20px">Both Parties The</span>
+                            <b style="font-size:25px" t-field="sale_order.partner_id.name"/>
+                            <span style="font-size:20px">And</span>
+                            <b style="font-size:25px" t-field="sale_order.project_name"/>
+                            <span style="font-size:20px">agree that all the information included in this
+                                proposal and its attachments will be treated as confidential and will not be
+                                duplicated nor reproduced without written permission from
+                            </span>
+                            <b style="font-size:25px" t-field="sale_order.company_id.name"/>
+                        </div>
+                    </div>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12">
+                            <strong style="text-align:left;font-size:30px">
+                                Contact
+                            </strong>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class="row">
+                        <div class="col-12">
+
+                            <strong style="text-align:left;font-size:20px">
+                                Name :
+                            </strong>
+                            <t t-if="sale_order.user_id">
+                                <strong style="text-align:left;font-size:20px" t-field="sale_order.user_id.name"/>
+                            </t>
+                            <br/>
+                            <strong style="text-align:left;font-size:20px">
+                                Jop Position :
+                            </strong>
+                            <t t-if="sale_order.user_id.partner_id.function">
+                                <strong style="text-align:left;font-size:20px"
+                                        t-field="sale_order.user_id.partner_id.function"/>
+                            </t>
+                            <br/>
+                            <strong style="text-align:left;font-size:20px">
+                                Email :
+                            </strong>
+                            <t t-if="sale_order.user_id.partner_id.email">
+                                <strong style="text-align:left;font-size:20px"
+                                        t-field="sale_order.user_id.partner_id.email"/>
+                            </t>
+                            <br/>
+
+                        </div>
+                    </div>
+
+                </div>
+                <div class="page" t-if="sale_order.sale_order_template_id.is_project" style="page-break-before:always;">
+                    <t t-if="sale_order.note">
+                        <div class="row" style="margin-top:45px">
+                            <div class="col-12">
+                                <strong style="text-align:left;font-size:30px">
+                                    Terms &amp; Conditions:
+                                </strong>
+                            </div>
+                        </div>
+                        <br/>
+                        <div class="row">
+                            <div class="col-12">
+                                <span style="font-size:30px" t-field="sale_order.note" name="order_note"/>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+                <div t-else="">
+                    <div id="informations">
+                        <div t-if="sale_order.transaction_ids and not invoices and sale_order.state in ('sent', 'sale') and portal_confirmation == 'pay' and not success and not error"
+                             t-att-data-order-id="sale_order.id">
+                            <t t-if="sale_order.transaction_ids">
+                                <t t-call="payment.transaction_status">
+                                    <t t-set="tx" t-value="sale_order.get_portal_last_transaction()"/>
+                                </t>
+                            </t>
+                        </div>
+                        <div class="row" id="so_date">
+                            <div class="mb-3 col-6">
+                                <t t-if="sale_order.state in ['sale', 'done', 'cancel']">
+                                    <strong>Order Date:</strong>
+                                </t>
+                                <t t-else="">
+                                    <strong>Quotation Date:</strong>
+                                </t>
+                                <span t-field="sale_order.date_order" t-options='{"widget": "date"}'/>
+                            </div>
+                            <div class="mb-3 col-6" t-if="sale_order.validity_date">
+                                <strong>Expiration Date:</strong>
+                                <span t-field="sale_order.validity_date" t-options='{"widget": "date"}'/>
+                            </div>
+                        </div>
+                        <div class="row" id="invoicing_shipping_address">
+                            <div class="col-lg-6">
+                                <strong class="d-block mb-1">
+                                    <t t-if="sale_order.partner_shipping_id == sale_order.partner_invoice_id">
+                                        Invoicing and Shipping Address:
+                                    </t>
+                                    <t t-else="">
+                                        Invoicing Address:
+                                    </t>
+                                </strong>
+                                <address t-field="sale_order.partner_invoice_id"
+                                         t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            </div>
+                            <div t-if="sale_order.partner_shipping_id != sale_order.partner_invoice_id"
+                                 id="shipping_address"
+                                 class="col-lg-6">
+                                <strong class="d-block mb-1">
+                                    Shipping Address:
+                                </strong>
+                                <address t-field="sale_order.partner_shipping_id"
+                                         t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": True}'/>
+                            </div>
+                        </div>
+
+                        <t t-set="invoices"
+                           t-value="sale_order.invoice_ids.filtered(lambda i: i.state not in ['draft', 'cancel'])"/>
+                        <div t-if="invoices" class="row">
+                            <div class="col">
+                                <strong class="d-block mb-1">Invoices</strong>
+                                <ul class="list-group mb-4">
+                                    <t t-foreach="invoices" t-as="i">
+                                        <t t-set="report_url"
+                                           t-value="i.get_portal_url(report_type='pdf', download=True)"/>
+                                        <t t-set="authorized_tx_ids"
+                                           t-value="i.transaction_ids.filtered(lambda tx: tx.state == 'authorized')"/>
+                                        <div class="d-flex flex-wrap align-items-center justify-content-between">
+                                            <div>
+                                                <a t-att-href="report_url">
+                                                    <span t-out="i.name"/>
+                                                </a>
+                                                <div class="small d-lg-inline-block">Date:
+                                                    <span class="text-muted" t-field="i.invoice_date"/>
+                                                </div>
+                                            </div>
+                                            <span t-if="i.payment_state in ('paid', 'in_payment')"
+                                                  class="small badge text-bg-success orders_label_text_align">
+                                                <i class="fa fa-fw fa-check"/>
+                                                <b>Paid</b>
+                                            </span>
+                                            <span t-elif="authorized_tx_ids"
+                                                  class="small badge text-bg-success orders_label_text_align">
+                                                <i class="fa fa-fw fa-check"/>
+                                                <b>Authorized</b>
+                                            </span>
+                                            <span t-else="" class="small badge text-bg-info orders_label_text_align">
+                                                <i class="fa fa-fw fa-clock-o"/>
+                                                <b>Waiting Payment</b>
+                                            </span>
+                                        </div>
+                                    </t>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

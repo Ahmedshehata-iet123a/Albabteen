@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="arabic_english_invoice_custom" inherit_id="l10n_gcc_invoice.arabic_english_invoice">
+            <xpath expr="//div[@class='page']" position="inside">
+                 <div align="right" style="margin-top:4pt;text-align:right;padding-right:2pt">
+
+                    <img t-if="o.company_id.stamp" t-att-src="image_data_uri(o.company_id.stamp)"
+                         style="max-height: 200px;width:200px" alt="Logo"/>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

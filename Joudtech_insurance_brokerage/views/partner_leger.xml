@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="account_reports.partner_ledger_report" model="account.report">
+
+            <field name="column_ids">
+                  <record id="partner_ledger_report_matching_number33" model="account.report.column">
+                    <field name="name">POLICY NO</field>
+                    <field name="expression_label">policy_no</field>
+                    <field name="figure_type">none</field>
+                </record>
+                 <record id="partner_ledger_report_matching_number355" model="account.report.column">
+                    <field name="name">ID NO</field>
+                    <field name="expression_label">id_no</field>
+                    <field name="figure_type">none</field>
+                </record>
+            </field>
+        </record>
+    </data>
+</odoo>

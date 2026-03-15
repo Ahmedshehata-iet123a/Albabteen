@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_custom_bank_statment,custom.bank.statment.user,model_custom_bank_statment,,1,1,1,1
+access_custom_bank_statment_LINE,custom.bank.statment.LINE.user,model_custom_bank_statment_line,,1,1,1,1

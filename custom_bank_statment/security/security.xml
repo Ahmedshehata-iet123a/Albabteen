@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+    
+
+    <record id="group_confirm_custom_bank_statment" model="res.groups">
+        <field name="name">Confirm Bank Statment</field>
+    </record>
+    
+
+    </data>
+
+</odoo>

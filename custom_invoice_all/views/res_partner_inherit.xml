@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Res Partner Form View to Modify it -->
+        <record id="res_partner_inherit_form_view" model="ir.ui.view">
+            <field name="name">res.partner.inherit.form.view</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//h1" position="after">
+                    <h1>
+                        <label for="arabic_name"/>
+                        <field name="arabic_name"/>
+                    </h1>
+                </xpath>
+
+<!--                <xpath expr="//field[@name='vat']" position="before">-->
+<!--                    <field name="arabic_address"/>-->
+<!--                    <field name="arabic_city"/>-->
+<!--                    <field name="arabic_state"/>-->
+<!--                    <field name="arabic_country"/>-->
+<!--                </xpath>-->
+
+                <xpath expr="//field[@name='category_id']" position="after">
+                    <field name="company_registry" invisible="1" />
+                    <field name="bank_name"/>
+                    <field name="iban"/>
+<!--                    <field name="arabic_bank_name"/>-->
+                </xpath>
+
+            </field>
+        </record>
+
+    </data>
+</odoo>

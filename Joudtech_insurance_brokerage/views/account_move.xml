@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="view_move_form_other_account" model="ir.ui.view">
+            <field name="name">view_move_form_other_account</field>
+            <field name="model">account.move</field>
+            <field name="inherit_id" ref="account.view_move_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="other_account_id" attrs="{'readonly':[('state','!=','draft')],'invisible':[('move_type','!=','out_invoice')]} "/>
+                    <!-- Add your fields or attributes here -->
+                </xpath>
+                <xpath expr="//field[@name='ref'][2]" position="attributes">
+
+                    <attribute name="attrs">{'required':[('move_type','=','entry')],'invisible':[('move_type', 'in', ('in_invoice', 'in_receipt', 'in_refund', 'out_invoice', 'out_refund'))]}</attribute>
+
+                </xpath>
+                <xpath expr="//notebook/page[@id='aml_tab']/field[@name='line_ids']/tree/field[@name='partner_id']" position="attributes">
+                    <attribute name="attrs"> {'column_invisible': [('parent.move_type', '!=', 'entry')],
+                        'required':[('account_type','in',('asset_receivable','liability_payable'))]}</attribute>
+
+                </xpath>
+                 <xpath expr="//notebook/page[@id='aml_tab']/field[@name='line_ids']/tree/field[@name='name']" position="attributes">
+                     <attribute name="required">True </attribute>
+                 </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

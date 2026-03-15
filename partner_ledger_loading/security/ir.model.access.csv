@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_partner_ledger_loading_partner_ledger_loading,partner_ledger_loading.partner_ledger_loading,model_partner_ledger_loading_partner_ledger_loading,base.group_user,1,1,1,1

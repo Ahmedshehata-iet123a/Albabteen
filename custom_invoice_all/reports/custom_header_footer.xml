@@ -1,0 +1,429 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+        <template id="external_layout_standard_custom" inherit_id="web.external_layout_standard">
+            <!--            <t t-set="company" t-value="user.company_id"/>-->
+            <xpath expr="//div[1]" position="replace">
+               <div t-attf-class="header o_company_#{company.id}_layout"  dir="ltr" t-att-style="report_header_style">
+                     <div class="row" style="border: 2px solid black" >
+                        <style>
+                            .adjust-line-height {
+                            line-height: 1em;
+                            }
+                        </style>
+                        <div class="col-5 mb4 adjust-line-height" style="text-align:left;margin-top:4pt;padding-left:2pt">
+                            <t t-if="company.name">
+                                <div t-field="company.name" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.street">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.street" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.city">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.city" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.state_id">
+                               <div t-esc="company.with_context(lang='en_US').partner_id.state_id.name" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.country_id">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.country_id.name" style="line-height: 1em;"/>
+                            </t>
+                        </div>
+                        <div class="col-3 mb4" style="margin-top:4pt;text-align:center">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                 style="max-height: 70px;max-width:150px;"
+                                 alt="Logo"/>
+                        </div>
+                           <div class="col-4 mb4" style="margin-top:4pt;text-align:right;padding-right:2pt">
+                            <t t-if="company.partner_id.arabic_name">
+                                <div t-field="company.partner_id.arabic_name"/>
+                            </t>
+                            <t t-if="company.partner_id.street">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.street"/>
+                            </t>
+                            <t t-if="company.partner_id.city">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.city"/>
+                            </t>
+                            <t t-if="company.partner_id.state_id">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.state_id.name"/>
+                            </t>
+                            <t t-if="company.partner_id.country_id">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.country_id.name"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="row" style="border: 1px solid black; margin-top:4pt">
+                        <div class="col-6 mb4" t-if="company.partner_id.company_registry" style="text-align:center;border: 1px solid black" name="company_vat">
+                            <div>
+                                <strong style="white-space:nowrap;margin-right:50px;">CR
+                                </strong>
+                                <span t-field="company.partner_id.company_registry"
+                                      style="margin-right:50px;margin-left:50px;"/>
+                                <strong style="white-space:nowrap;margin-left:50px;">السجل التجاري</strong>
+                            </div>
+                        </div>
+                        <div class="col-6 mb4" t-if="company.vat" style="text-align:center;border: 1px solid black" name="company_vat">
+                            <div>
+                                <strong style="white-space:nowrap;margin-right:20px;">VAT
+                                </strong>
+                                <span t-field="company.vat" style="margin-right:20px;margin-left:20px;"/>
+                                <strong style="white-space:nowrap;margin-left:20px;">ضريبة القيمة المضافة</strong>
+
+                            </div>
+                        </div>
+                    </div>
+
+              </div>
+
+            </xpath>
+
+<!--            <xpath expr="//div/div[hasclass('text-center')]" position="replace">-->
+
+<!--                <div class="row text-center"-->
+<!--                     style="border-top: 1px solid black;background-color:#DCDCDC;">-->
+<!--                    <div class="col-3 mb4" style="text-align:center;">-->
+<!--                        <span>Address</span>-->
+<!--                        <div t-field="company.partner_id.arabic_address"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-3 mb4" style="text-align:center;">-->
+<!--                        <span>Email</span>-->
+<!--                        <div t-field="company.email"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-3 mb4" style="text-align:center">-->
+<!--                        <span>Website</span>-->
+<!--                        <div t-field="company.website"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-3 mb4" style="text-align:center">-->
+<!--                        <span>Phone</span>-->
+<!--                        <div t-field="company.phone"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </xpath>-->
+
+        </template>
+        <template id="external_layout_boxed_custom" inherit_id="web.external_layout_boxed">
+            <!--            <t t-set="company" t-value="user.company_id"/>-->
+            <xpath expr="//div[1]" position="replace">
+            <xpath expr="//div[1]" position="replace">
+               <div t-attf-class="header o_company_#{company.id}_layout"  dir="ltr" t-att-style="report_header_style">
+                     <div class="row" style="border: 2px solid black" >
+                        <style>
+                            .adjust-line-height {
+                            line-height: 1em;
+                            }
+                        </style>
+                        <div class="col-5 mb4 adjust-line-height" style="text-align:left;margin-top:4pt;padding-left:2pt">
+                            <t t-if="company.name">
+                                <div t-field="company.name" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.street">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.street" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.city">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.city" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.state_id">
+                               <div t-esc="company.with_context(lang='en_US').partner_id.state_id.name" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.country_id">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.country_id.name" style="line-height: 1em;"/>
+                            </t>
+                        </div>
+                        <div class="col-3 mb4" style="margin-top:4pt;text-align:center">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                 style="max-height: 70px;max-width:150px;"
+                                 alt="Logo"/>
+                        </div>
+                           <div class="col-4 mb4" style="margin-top:4pt;text-align:right;padding-right:2pt">
+                            <t t-if="company.partner_id.arabic_name">
+                                <div t-field="company.partner_id.arabic_name"/>
+                            </t>
+                            <t t-if="company.partner_id.street">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.street"/>
+                            </t>
+                            <t t-if="company.partner_id.city">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.city"/>
+                            </t>
+                            <t t-if="company.partner_id.state_id">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.state_id.name"/>
+                            </t>
+                            <t t-if="company.partner_id.country_id">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.country_id.name"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="row" style="border: 1px solid black; margin-top:4pt">
+                        <div class="col-6 mb4" t-if="company.partner_id.company_registry" style="text-align:center;border: 1px solid black" name="company_vat">
+                            <div>
+                                <strong style="white-space:nowrap;margin-right:50px;">CR
+                                </strong>
+                                <span t-field="company.partner_id.company_registry"
+                                      style="margin-right:50px;margin-left:50px;"/>
+                                <strong style="white-space:nowrap;margin-left:50px;">السجل التجاري</strong>
+                            </div>
+                        </div>
+                        <div class="col-6 mb4" t-if="company.vat" style="text-align:center;border: 1px solid black" name="company_vat">
+                            <div>
+                                <strong style="white-space:nowrap;margin-right:20px;">VAT
+                                </strong>
+                                <span t-field="company.vat" style="margin-right:20px;margin-left:20px;"/>
+                                <strong style="white-space:nowrap;margin-left:20px;">ضريبة القيمة المضافة</strong>
+
+                            </div>
+                        </div>
+                    </div>
+
+              </div>
+
+            </xpath>
+
+            </xpath>
+
+<!--            <xpath expr="//div/div[hasclass('text-center')]" position="replace">-->
+
+<!--                <div class="row text-center"-->
+<!--                     style="border-top: 1px solid black;background-color:#DCDCDC;">-->
+<!--                    <div class="col-3 mb4" style="text-align:center;">-->
+<!--                        <span>Address</span>-->
+<!--                        <div t-field="company.partner_id.arabic_address"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-3 mb4" style="text-align:center;">-->
+<!--                        <span>Email</span>-->
+<!--                        <div t-field="company.email"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-3 mb4" style="text-align:center">-->
+<!--                        <span>Website</span>-->
+<!--                        <div t-field="company.website"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-3 mb4" style="text-align:center">-->
+<!--                        <span>Phone</span>-->
+<!--                        <div t-field="company.phone"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </xpath>-->
+
+        </template>
+        <template id="external_layout_bold_custom" inherit_id="web.external_layout_bold">
+            <!--            <t t-set="company" t-value="user.company_id"/>-->
+            <xpath expr="//div[1]" position="replace">
+            <xpath expr="//div[1]" position="replace">
+  <div t-attf-class="header o_company_#{company.id}_layout"  dir="ltr" t-att-style="report_header_style">
+                     <div class="row" style="border: 2px solid black" >
+                        <style>
+                            .adjust-line-height {
+                            line-height: 1em;
+                            }
+                        </style>
+                        <div class="col-5 mb4 adjust-line-height" style="text-align:left;margin-top:4pt;padding-left:2pt">
+                            <t t-if="company.name">
+                                <div t-field="company.name" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.street">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.street" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.city">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.city" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.state_id">
+                               <div t-esc="company.with_context(lang='en_US').partner_id.state_id.name" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.country_id">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.country_id.name" style="line-height: 1em;"/>
+                            </t>
+                        </div>
+                        <div class="col-3 mb4" style="margin-top:4pt;text-align:center">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                 style="max-height: 70px;max-width:150px;"
+                                 alt="Logo"/>
+                        </div>
+                           <div class="col-4 mb4" style="margin-top:4pt;text-align:right;padding-right:2pt">
+                            <t t-if="company.partner_id.arabic_name">
+                                <div t-field="company.partner_id.arabic_name"/>
+                            </t>
+                            <t t-if="company.partner_id.street">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.street"/>
+                            </t>
+                            <t t-if="company.partner_id.city">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.city"/>
+                            </t>
+                            <t t-if="company.partner_id.state_id">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.state_id.name"/>
+                            </t>
+                            <t t-if="company.partner_id.country_id">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.country_id.name"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="row" style="border: 1px solid black; margin-top:4pt">
+                        <div class="col-6 mb4" t-if="company.partner_id.company_registry" style="text-align:center;border: 1px solid black" name="company_vat">
+                            <div>
+                                <strong style="white-space:nowrap;margin-right:50px;">CR
+                                </strong>
+                                <span t-field="company.partner_id.company_registry"
+                                      style="margin-right:50px;margin-left:50px;"/>
+                                <strong style="white-space:nowrap;margin-left:50px;">السجل التجاري</strong>
+                            </div>
+                        </div>
+                        <div class="col-6 mb4" t-if="company.vat" style="text-align:center;border: 1px solid black" name="company_vat">
+                            <div>
+                                <strong style="white-space:nowrap;margin-right:20px;">VAT
+                                </strong>
+                                <span t-field="company.vat" style="margin-right:20px;margin-left:20px;"/>
+                                <strong style="white-space:nowrap;margin-left:20px;">ضريبة القيمة المضافة</strong>
+
+                            </div>
+                        </div>
+                    </div>
+
+              </div>
+
+            </xpath>
+
+            </xpath>
+
+            <!--            <xpath expr="//div[3]" position="replace">-->
+
+            <!--                <div class="row text-center"-->
+            <!--                     style="border-top: 1px solid black;background-color:#DCDCDC;">-->
+            <!--                    <div class="col-3 mb4" style="text-align:center;">-->
+            <!--                        <span>Address</span>-->
+            <!--                        <div t-field="company.partner_id.arabic_address"/>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="col-3 mb4" style="text-align:center;">-->
+            <!--                        <span>Email</span>-->
+            <!--                        <div t-field="company.email"/>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="col-3 mb4" style="text-align:center">-->
+            <!--                        <span>Website</span>-->
+            <!--                        <div t-field="company.website"/>-->
+            <!--                    </div>-->
+
+            <!--                    <div class="col-3 mb4" style="text-align:center">-->
+            <!--                        <span>Phone</span>-->
+            <!--                        <div t-field="company.phone"/>-->
+            <!--                    </div>-->
+            <!--                </div>-->
+
+            <!--            </xpath>-->
+
+        </template>
+        <template id="external_layout_striped_custom" inherit_id="web.external_layout_striped">
+            <!--            <t t-set="company" t-value="user.company_id"/>-->
+            <xpath expr="//div[1]" position="replace">
+                           <xpath expr="//div[1]" position="replace">
+          <div t-attf-class="header o_company_#{company.id}_layout"  dir="ltr" t-att-style="report_header_style">
+                     <div class="row" style="border: 2px solid black" >
+                        <style>
+                            .adjust-line-height {
+                            line-height: 1em;
+                            }
+                        </style>
+                        <div class="col-5 mb4 adjust-line-height" style="text-align:left;margin-top:4pt;padding-left:2pt">
+                            <t t-if="company.name">
+                                <div t-field="company.name" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.street">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.street" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.city">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.city" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.state_id">
+                               <div t-esc="company.with_context(lang='en_US').partner_id.state_id.name" style="line-height: 1em;"/>
+                            </t>
+                            <t t-if="company.partner_id.country_id">
+                                <div t-esc="company.with_context(lang='en_US').partner_id.country_id.name" style="line-height: 1em;"/>
+                            </t>
+                        </div>
+                        <div class="col-3 mb4" style="margin-top:4pt;text-align:center">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                 style="max-height: 70px;max-width:150px;"
+                                 alt="Logo"/>
+                        </div>
+                           <div class="col-4 mb4" style="margin-top:4pt;text-align:right;padding-right:2pt">
+                            <t t-if="company.partner_id.arabic_name">
+                                <div t-field="company.partner_id.arabic_name"/>
+                            </t>
+                            <t t-if="company.partner_id.street">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.street"/>
+                            </t>
+                            <t t-if="company.partner_id.city">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.city"/>
+                            </t>
+                            <t t-if="company.partner_id.state_id">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.state_id.name"/>
+                            </t>
+                            <t t-if="company.partner_id.country_id">
+                                <div t-esc="company.with_context(lang='ar_001').partner_id.country_id.name"/>
+                            </t>
+                        </div>
+                    </div>
+                    <div class="row" style="border: 1px solid black; margin-top:4pt">
+                        <div class="col-6 mb4" t-if="company.partner_id.company_registry" style="text-align:center;border: 1px solid black" name="company_vat">
+                            <div>
+                                <strong style="white-space:nowrap;margin-right:50px;">CR
+                                </strong>
+                                <span t-field="company.partner_id.company_registry"
+                                      style="margin-right:50px;margin-left:50px;"/>
+                                <strong style="white-space:nowrap;margin-left:50px;">السجل التجاري</strong>
+                            </div>
+                        </div>
+                        <div class="col-6 mb4" t-if="company.vat" style="text-align:center;border: 1px solid black" name="company_vat">
+                            <div>
+                                <strong style="white-space:nowrap;margin-right:20px;">VAT
+                                </strong>
+                                <span t-field="company.vat" style="margin-right:20px;margin-left:20px;"/>
+                                <strong style="white-space:nowrap;margin-left:20px;">ضريبة القيمة المضافة</strong>
+
+                            </div>
+                        </div>
+                    </div>
+
+              </div>
+
+            </xpath>
+
+
+            </xpath>
+
+<!--            <xpath expr="//div/div[hasclass('text-center')]" position="replace">-->
+
+<!--                <div class="row text-center"-->
+<!--                     style="border-top: 1px solid black;background-color:#DCDCDC;">-->
+<!--                    <div class="col-3 mb4" style="text-align:center;">-->
+<!--                        <span>Address</span>-->
+<!--                        <div t-field="company.partner_id.arabic_address"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-3 mb4" style="text-align:center;">-->
+<!--                        <span>Email</span>-->
+<!--                        <div t-field="company.email"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-3 mb4" style="text-align:center">-->
+<!--                        <span>Website</span>-->
+<!--                        <div t-field="company.website"/>-->
+<!--                    </div>-->
+
+<!--                    <div class="col-3 mb4" style="text-align:center">-->
+<!--                        <span>Phone</span>-->
+<!--                        <div t-field="company.phone"/>-->
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </xpath>-->
+
+        </template>
+    </data>
+</odoo>

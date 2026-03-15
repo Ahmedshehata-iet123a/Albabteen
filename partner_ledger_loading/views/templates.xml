@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="search_template" inherit_id="account_reports.search_template">
+        <xpath expr="//div[hasclass('o_account_reports_filter_journals')]" position="after">
+            <div class="btn-group dropdown o_account_reports_filter_journals" t-if="options.get('account_id') != None">
+                <t t-call="partner_ledger_loading.search_template_account_id"/>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="search_template_account_id">
+        <button type="button" class="o-no-caret btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown">
+            <span class="fa fa-user"/>
+            Account:
+<!--            -->
+<!--                        <t t-set="names_selected"-->
+<!--                           t-value="[options['account_id'][n]['name'] for n in range(len(options['account_id'])) if options['account_id'][n]['selected']]"/>-->
+<!--                        -->
+<!--                        <t t-out="options['account_id']['name']"/>-->
+        </button>
+        <div class="dropdown-menu o_filter_menu" role="menu">
+            <t t-foreach="options['account_id']" t-as="account_id">
+                <a t-att-title="account_id['name']"
+                   t-att-data-id="account_id['id']"
+                   data-filter="account_id"
+                   class="dropdown-item js_account_report_choice_filter"
+                   role="menuitem"
+                   t-out="account_id['name']"/>
+            </t>
+        </div>
+    </template>
+
+
+</odoo>

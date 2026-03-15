@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="custom_bank_statment_form_view" model="ir.ui.view">
+            <field name="name">custom_bank_statment.form</field>
+            <field name="model">custom.bank.statment</field>
+            <field name="arch" type="xml">
+                <form string="Bank Statment">
+                    <header>
+                        <button name="action_confirm"
+                                string="Confirm"
+                                icon="fa-check-square"
+                                type="object" class="oe_highlight"
+                                groups="custom_bank_statment.group_confirm_custom_bank_statment"
+                            attrs="{'invisible': [('state','!=','draft')]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm"/>
+                    </header>
+                    <sheet>
+                        <div class="oe_button_box" name="button_box">
+                            <button class="oe_stat_button"
+                                name="get_journals"
+                                icon="fa-arrows-alt"
+                                attrs="{'invisible': [('state', '!=','confirm')]}"
+                                type="object">
+                                 <span class="o_stat_text">Journals</span>
+                            </button>
+                        </div>
+                        <group>
+                            <group >
+                                <field name="name" readonly="1" force_save="1"/>
+<!--                                <field name="stat_id" />-->
+                                <field name="date" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            </group>
+                            <group>
+                                <field name="currency_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                                       required="1" attrs="{'readonly': [('state','!=','draft')]}"/>
+                                <field name="journal_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"
+                                       required="1" attrs="{'readonly': [('state','!=','draft')]}"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="Statments Lines">
+                                <field name="line_ids" attrs="{'readonly': [('state','!=','draft')]}">
+                                    <tree editable="bottom">
+                                        <field name="ref"/>
+                                        <field name="date"/>
+                                        <field name="payment_ref"/>
+                                        <field name="partner_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+<!--                                        <field name="partner_name" />-->
+<!--                                        <field name="code"/>-->
+                                        <field name="account_id" options="{'no_quick_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                                        <field name="amount"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="custom_bank_statment_tree_view" model="ir.ui.view">
+            <field name="name">custom_bank_statment.tree</field>
+            <field name="model">custom.bank.statment</field>
+            <field name="arch" type="xml">
+                <tree string="Bank Statment" decoration-success="state == 'confirm'">
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="journal_id"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--        <record id="custom_bank_statment_search_view" model="ir.ui.view">-->
+        <!--            <field name="name">ProjectName.custom_bank_statment.search</field>-->
+        <!--            <field name="model">ProjectName.custom_bank_statment</field>-->
+        <!--            <field name="arch" type="xml">-->
+        <!--                <search string="ModelTitle">-->
+        <!--                    <group expand="1" string="Group By">-->
+        <!--                        <filter string="Example Field" name="example_field" domain="[]"-->
+        <!--                                context="{'group_by':'example_field'}"/>-->
+        <!--                    </group>-->
+        <!--                </search>-->
+        <!--            </field>-->
+        <!--        </record>-->
+
+        <record id="custom_bank_statment_act_window" model="ir.actions.act_window">
+            <field name="name">Bank Statment</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">custom.bank.statment</field>
+<!--            <field name="view_type">form</field>-->
+            <field name="view_mode">tree,form</field>
+        </record>
+
+        <menuitem name="Bank Statment"
+                  id="custom_bank_statment_menu"
+                  parent="account.menu_finance" action="custom_bank_statment_act_window"/>
+
+    </data>
+</odoo>

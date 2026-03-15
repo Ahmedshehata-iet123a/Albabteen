@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_partner_ledgerl,purchase_print_excel.purchase_print_excel,model_partner_ledger_customer,,1,1,1,1
+access_partner_2,purchase_print_excel.purchase_print_excel,model_excel_report_purchase,,1,1,1,1

@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="partner_custom.list">
+      <field name="name">partner_custom list</field>
+      <field name="model">partner_custom.partner_custom</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="partner_custom.action_window">
+      <field name="name">partner_custom window</field>
+      <field name="res_model">partner_custom.partner_custom</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="partner_custom.action_server">
+      <field name="name">partner_custom server</field>
+      <field name="model_id" ref="model_partner_custom_partner_custom"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="partner_custom" id="partner_custom.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="partner_custom.menu_1" parent="partner_custom.menu_root"/>
+    <menuitem name="Menu 2" id="partner_custom.menu_2" parent="partner_custom.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="partner_custom.menu_1_list" parent="partner_custom.menu_1"
+              action="partner_custom.action_window"/>
+    <menuitem name="Server to list" id="partner_custom" parent="partner_custom.menu_2"
+              action="partner_custom.action_server"/>
+-->
+  </data>
+</odoo>

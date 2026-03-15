@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="group_show_reports" model="res.groups">
+            <field name="name">Show Reports</field>
+        </record>
+        <record id="group_show_reporting" model="res.groups">
+            <field name="name">Show Reporting</field>
+        </record>
+    </data>
+</odoo>
